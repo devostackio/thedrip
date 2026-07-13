@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "subject": "Build L2/L3 stub pages",
+  "description": "personas.html, deliver.html, repositories.html, about.html, article.html — all with global menu + breadcrumbs so every nav link lands somewhere.",
+  "activeForm": "Building L2/L3 stub pages",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

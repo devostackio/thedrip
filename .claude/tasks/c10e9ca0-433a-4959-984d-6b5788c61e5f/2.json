@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "subject": "Build shared retro stylesheet (dscx.css)",
+  "description": "Shared CSS design system: Playfair/IBM Plex fonts, cream palette, simple shadows, rules, global masthead + nav, card system, spider links, breadcrumbs.",
+  "activeForm": "Building shared stylesheet",
+  "status": "completed",
+  "blocks": [],
+  "blockedBy": []
+}

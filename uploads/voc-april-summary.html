@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice of Customer — April 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f0f;
+    --ink-mid: #3a3a3a;
+    --ink-light: #7a7a7a;
+    --ink-faint: #d0d0d0;
+    --paper: #f8f6f2;
+    --accent: #1a1a1a;
+    --rule: 1px solid #0f0f0f;
+    --rule-light: 1px solid #d0d0d0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  body {
+    background: #e8e6e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .page {
+    background: var(--paper);
+    width: 816px;
+    min-height: 1056px;
+    padding: 52px 52px 44px;
+    position: relative;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-top: 3px solid var(--ink);
+    border-bottom: var(--rule);
+    padding: 14px 0 12px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+  .header-left {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+  }
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+  .subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .month-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.5px;
+  }
+  .dept-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: var(--rule);
+    margin-bottom: 28px;
+  }
+  .stat {
+    padding: 14px 16px;
+    border-right: var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-num.placeholder {
+    color: var(--ink-faint);
+    font-style: italic;
+    font-size: 22px;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    color: var(--ink-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .stat-delta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-mid);
+    margin-top: 3px;
+  }
+
+  /* ── MAIN GRID ── */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 212px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* ── LEFT COLUMN ── */
+  .left-col {}
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+  }
+
+  /* Reasons block */
+  .reasons-block {
+    margin-bottom: 22px;
+  }
+  .reasons-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: var(--rule);
+  }
+  .reason-row {
+    display: grid;
+    grid-template-columns: 22px 1fr 64px 56px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: var(--rule-light);
+    gap: 10px;
+  }
+  .reason-row:last-child { border-bottom: none; }
+  .reason-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-light);
+  }
+  .reason-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .reason-sub {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 9.5px;
+    color: var(--ink-light);
+    margin-top: 1px;
+  }
+  .reason-bar-wrap {
+    height: 4px;
+    background: var(--ink-faint);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .reason-bar {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 2px;
+  }
+  .reason-pct {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink);
+    text-align: right;
+  }
+
+  /* Two-col sub-section */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .sub-card {
+    border: var(--rule-light);
+    padding: 12px 14px;
+  }
+  .sub-card-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    border-bottom: var(--rule-light);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  .sub-card-item {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    padding: 3px 0;
+    border-bottom: var(--rule-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .sub-card-item:last-child { border-bottom: none; }
+  .sub-card-item::before {
+    content: '—';
+    color: var(--ink-faint);
+    font-size: 9px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Tactics */
+  .tactics-block {}
+  .tactic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: var(--rule-light);
+  }
+  .tactic-item:last-child { border-bottom: none; }
+  .tactic-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2px 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tactic-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10.5px;
+    color: var(--ink-mid);
+    line-height: 1.4;
+  }
+
+  /* ── RIGHT SIDEBAR ── */
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sidebar-box {
+    border: var(--rule);
+    padding: 14px;
+  }
+  .sidebar-box-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: var(--rule);
+  }
+
+  /* Calendar events */
+  .cal-item {
+    padding: 7px 0;
+    border-bottom: var(--rule-light);
+  }
+  .cal-item:last-child { border-bottom: none; }
+  .cal-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    color: var(--ink-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .cal-event {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .cal-desc {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 9px;
+    color: var(--ink-light);
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+
+  /* Teams */
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .team-pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: var(--rule-light);
+    padding: 4px 7px;
+    color: var(--ink-mid);
+  }
+
+  /* Outcomes */
+  .outcome-item {
+    padding: 6px 0;
+    border-bottom: var(--rule-light);
+  }
+  .outcome-item:last-child { border-bottom: none; }
+  .outcome-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px;
+    color: var(--ink-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .outcome-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 9.5px;
+    color: var(--ink-mid);
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: var(--rule);
+    margin-top: 24px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    color: var(--ink-light);
+    letter-spacing: 1px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 1px;
+    font-style: italic;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; width: 100%; min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="title">Voice of Customer</div>
+      <div class="subtitle">Executive Summary</div>
+    </div>
+    <div class="header-right">
+      <div class="month-label">April 2025</div>
+      <div class="dept-label">Customer Insights · Confidential</div>
+    </div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num placeholder">###</div>
+      <div class="stat-label">Total<br>Cancellations</div>
+      <div class="stat-delta">vs. _____ prior month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num placeholder">##%</div>
+      <div class="stat-label">Churn<br>Rate</div>
+      <div class="stat-delta">vs. _____ prior month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num placeholder">###</div>
+      <div class="stat-label">Survey<br>Responses</div>
+      <div class="stat-delta">__ % response rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num placeholder">##%</div>
+      <div class="stat-label">Avg App<br>Review Score</div>
+      <div class="stat-delta">__ reviews analyzed</div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="main-grid">
+    <div class="left-col">
+
+      <!-- TOP CANCELLATION REASONS -->
+      <div class="reasons-block">
+        <div class="reasons-title">Top Reasons Customers Are Leaving / Flagging Concerns</div>
+
+        <div class="reason-row">
+          <div class="reason-num">01</div>
+          <div>
+            <div class="reason-text">Pricing &amp; Value Perception</div>
+            <div class="reason-sub">Cost too high relative to perceived benefit</div>
+          </div>
+          <div class="reason-bar-wrap"><div class="reason-bar" style="width:85%"></div></div>
+          <div class="reason-pct">##%</div>
+        </div>
+
+        <div class="reason-row">
+          <div class="reason-num">02</div>
+          <div>
+            <div class="reason-text">Product / Feature Gaps</div>
+            <div class="reason-sub">Missing functionality or unmet use-case needs</div>
+          </div>
+          <div class="reason-bar-wrap"><div class="reason-bar" style="width:68%"></div></div>
+          <div class="reason-pct">##%</div>
+        </div>
+
+        <div class="reason-row">
+          <div class="reason-num">03</div>
+          <div>
+            <div class="reason-text">App Performance &amp; Bugs</div>
+            <div class="reason-sub">Crashes, slow load times, UX friction</div>
+          </div>
+          <div class="reason-bar-wrap"><div class="reason-bar" style="width:52%"></div></div>
+          <div class="reason-pct">##%</div>
+        </div>
+
+        <div class="reason-row">
+          <div class="reason-num">04</div>
+          <div>
+            <div class="reason-text">Competitive Alternative</div>
+            <div class="reason-sub">Switched to a specific competitor</div>
+          </div>
+          <div class="reason-bar-wrap"><div class="reason-bar" style="width:40%"></div></div>
+          <div class="reason-pct">##%</div>
+        </div>
+
+        <div class="reason-row">
+          <div class="reason-num">05</div>
+          <div>
+            <div class="reason-text">Onboarding &amp; Support Experience</div>
+            <div class="reason-sub">Difficult setup, slow response times</div>
+          </div>
+          <div class="reason-bar-wrap"><div class="reason-bar" style="width:29%"></div></div>
+          <div class="reason-pct">##%</div>
+        </div>
+
+        <div class="reason-row">
+          <div class="reason-num">06</div>
+          <div>
+            <div class="reason-text">Business Change / No Longer Needed</div>
+            <div class="reason-sub">Budget cuts, company pivot, seasonal use</div>
+          </div>
+          <div class="reason-bar-wrap"><div class="reason-bar" style="width:18%"></div></div>
+          <div class="reason-pct">##%</div>
+        </div>
+      </div>
+
+      <!-- APP REVIEWS + SURVEYS -->
+      <div class="two-col">
+        <div class="sub-card">
+          <div class="sub-card-title">App Review Themes</div>
+          <div class="sub-card-item">[ Replace with top positive theme ]</div>
+          <div class="sub-card-item">[ Replace with top positive theme ]</div>
+          <div class="sub-card-item">[ Replace with top negative theme ]</div>
+          <div class="sub-card-item">[ Replace with top negative theme ]</div>
+        </div>
+        <div class="sub-card">
+          <div class="sub-card-title">General Survey Themes</div>
+          <div class="sub-card-item">[ Replace with recurring request ]</div>
+          <div class="sub-card-item">[ Replace with recurring request ]</div>
+          <div class="sub-card-item">[ Replace with pain point surfaced ]</div>
+          <div class="sub-card-item">[ Replace with notable compliment ]</div>
+        </div>
+      </div>
+
+      <!-- TACTICS IN MOTION -->
+      <div class="section-label">Response Tactics in Motion</div>
+      <div class="tactics-block">
+        <div class="tactic-item">
+          <span class="tactic-tag">Pricing</span>
+          <div class="tactic-text">[ Describe pricing adjustment or packaging initiative underway ]</div>
+        </div>
+        <div class="tactic-item">
+          <span class="tactic-tag">Product</span>
+          <div class="tactic-text">[ Describe feature build or roadmap acceleration in response to feedback ]</div>
+        </div>
+        <div class="tactic-item">
+          <span class="tactic-tag">Tech</span>
+          <div class="tactic-text">[ Describe bug fix sprint or performance improvement initiative ]</div>
+        </div>
+        <div class="tactic-item">
+          <span class="tactic-tag">CS</span>
+          <div class="tactic-text">[ Describe onboarding or support workflow changes ]</div>
+        </div>
+      </div>
+
+    </div><!-- /left-col -->
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="right-col">
+
+      <!-- UPCOMING CALENDAR -->
+      <div class="sidebar-box">
+        <div class="sidebar-box-title">Upcoming</div>
+
+        <div class="cal-item">
+          <div class="cal-date">May · Week 1</div>
+          <div class="cal-event">Annual Customer Survey Launch</div>
+          <div class="cal-desc">Full send to active base; closes May 28</div>
+        </div>
+
+        <div class="cal-item">
+          <div class="cal-date">May · Week 2</div>
+          <div class="cal-event">Persona Segmentation Kickoff</div>
+          <div class="cal-desc">Data pull + clustering workshop with Product &amp; Growth</div>
+        </div>
+
+        <div class="cal-item">
+          <div class="cal-date">May · Week 3</div>
+          <div class="cal-event">Mid-Survey Pulse Check</div>
+          <div class="cal-desc">Response rate review; reminder sequence if needed</div>
+        </div>
+
+        <div class="cal-item">
+          <div class="cal-date">June · Week 1</div>
+          <div class="cal-event">Segmentation Readout</div>
+          <div class="cal-desc">Present persona outcomes to leadership</div>
+        </div>
+      </div>
+
+      <!-- EXPECTED OUTCOMES -->
+      <div class="sidebar-box">
+        <div class="sidebar-box-title">Expected Outcomes</div>
+        <div class="outcome-item">
+          <div class="outcome-label">Annual Survey</div>
+          <div class="outcome-text">Baseline NPS, feature priority rankings, churn risk signals</div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-label">Persona Segmentation</div>
+          <div class="outcome-text">3–5 defined customer personas to inform roadmap, messaging &amp; pricing tiers</div>
+        </div>
+      </div>
+
+      <!-- PARTNERING TEAMS -->
+      <div class="sidebar-box">
+        <div class="sidebar-box-title">Partnering Teams</div>
+        <div class="team-grid">
+          <div class="team-pill">Growth</div>
+          <div class="team-pill">Sales</div>
+          <div class="team-pill">Operations</div>
+          <div class="team-pill">Tech</div>
+          <div class="team-pill">Product</div>
+        </div>
+      </div>
+
+    </div><!-- /right-col -->
+  </div><!-- /main-grid -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-note">April 2025 · Voice of Customer · Internal Use Only</div>
+    <div class="footer-logo">Customer Insights</div>
+  </div>
+
+</div>
+</body>
+</html>
